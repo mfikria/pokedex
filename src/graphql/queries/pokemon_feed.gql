@@ -1,0 +1,19 @@
+query PokemonFeed($offset: Int!, $limit: Int!) {
+  pokedex {
+    pokemon(start: $offset, number: $limit) {
+      edges {
+        node {
+          name
+          id
+          types{
+            edges {
+              node {
+                name
+              }
+            }
+        	}
+        }
+      }
+    }
+  }
+}
