@@ -103,7 +103,8 @@
     "redux-thunk": "^2.2.0",
     "regenerator-runtime": "^0.11.0",
     "seamless-immutable": "^7.1.2",
-    "semantic-ui-react": "^0.74.2"
+    "semantic-ui-react": "^0.74.2",
+    "semantic-ui-css": "^2.2.12"
   },
   "engines": {
     "node": ">=7",
