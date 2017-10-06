@@ -1,0 +1,60 @@
+query PokemonDetail($id: Int!){
+  pokemon(number: $id){
+
+  id
+  name
+  descriptions(first: 1) {
+    edges {
+      node {
+        description
+      }
+    }
+  }
+
+    #Pokedex Data
+    national_id
+    types{
+      edges {
+        node {
+          name
+        }
+      }
+  	}
+    species
+    height
+    weight
+    abilities {
+      edges {
+        node {
+          name
+        }
+      }
+    }
+
+  	#Training
+    ev_yield
+    catch_rate
+    happiness
+    exp
+    growth_rate
+
+    #Breeding
+    egg_groups {
+      edges {
+        node {
+          name
+        }
+      }
+    }
+    egg_cycles
+    male_female_ratio
+
+    #Base Stats
+    hp
+    attack
+    defense
+    sp_atk
+    sp_def
+    speed
+	}
+}
