@@ -20,15 +20,12 @@ import config from 'kit/config';
 
 /* App */
 
-// Example counter reducer.  This simply increments the counter by +1
-import counterReducer from 'src/reducers/counter';
-
 // Main component -- i.e. the 'root' React component in our app
 import Main from 'src/components/main';
 
 // Init global styles.  These will be added to the resulting CSS automatically
 // without any class hashing.  Use this to include default or framework CSS.
-import './styles.global.css';
+// import './styles.global.css';
 
 // ----------------------
 
@@ -38,7 +35,7 @@ import './styles.global.css';
 // Note:  The initial state (3rd param) will automatically be wrapped in
 // `seamless-immutable` by the kit's Redux init code, so plain objects are
 // automatically immutable by default
-config.addReducer('counter', counterReducer, { count: 0 });
+// config.addReducer('counter', counterReducer, { count: 0 });
 
 /* GRAPHQL */
 
@@ -50,7 +47,13 @@ config.addReducer('counter', counterReducer, { count: 0 });
 //
 // 2.  On the client, it will append the correct server URL so that we can
 // call the ReactQL host properly, and let the server handle our requests
-config.enableGraphQLServer();
+//config.enableGraphQLServer();
+
+// Import external graphql server if any
+  config.setGraphQLEndpoint('https://pokeapi-graphiql.herokuapp.com/graphql');
+  // config.setApolloNetworkOptions({
+  //   mode: 'no-cors'
+  // });
 
 /* SERVER */
 
@@ -92,7 +95,7 @@ if (SERVER) {
   // Pass in the schema to use for our internal GraphQL server.  Note we're
   // doing this inside a `SERVER` block to avoid importing a potentially large
   // file, which would then inflate our client bundle unnecessarily
-  config.setGraphQLSchema(require('src/graphql/schema').default);
+  //config.setGraphQLSchema(require('src/graphql/schema').default);
 
   /* CUSTOM ROUTES */
 
