@@ -20,7 +20,46 @@ class FeedPage extends React.PureComponent {
     }
   }
 
+  static numFetchedLimit = 13;
+  static numFetchedLimitFilter = 7;
 
+  countAvailablePokemonByType = (filterOption) => {
+    const pokemonData = this.props.pokedex.pokemon.edges;
+    if(filterOption === 'All') {
+      return pokemonData.length;
+    }
+
+    let counter = 0;
+
+    pokemonData.forEach(item => {
+      item.node.types.edges.forEach(type => {
+        if(type.node.name === filterOption){
+          counter++;
+        }
+      });
+    });
+
+    return counter;
+  }
+
+  fetchMoreOnFilter = async (filterOption) => {
+    let counter = this.countAvailablePokemonByType(filterOption);
+    while(counter < FeedPage.numFetchedLimit) {
+      const fetched = await this.props.fetchMore();
+      counter = this.countAvailablePokemonByType(filterOption);
+    }
+  }
+
+  handleFilter = (e, { value }) => {
+    this.setState({ filterOption: value });
+    this.fetchMoreOnFilter(value);
+  }
+
+  handleFetchMore = () => {
+    if(this.props.loading) {
+      this.props.fetchMore();
+    }
+  }
 
   render() {
     const { loading, error, pokedex, fetchMore } = this.props;
