@@ -18,7 +18,24 @@ import pokemonDetailQuery from 'src/graphql/queries/pokemon_detail.gql';
 class DetailPage extends React.PureComponent {
 
   render() {
-    
+    const { loading, error, pokemon } = this.props.data;
+
+    // debug
+    // console.dir(this.props.data);
+
+    let content;
+
+    if(loading) {
+      content = <Loader active inline='centered'>Loading</Loader>;
+    }
+
+    if(error) {
+      content = (
+        <Segment inverted color='red' secondary>
+          Error happened! Please check your console for further information.
+        </Segment>
+      );
+    }
 
     if(pokemon){
       content = (
