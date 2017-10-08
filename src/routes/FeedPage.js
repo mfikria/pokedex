@@ -18,7 +18,9 @@ class FeedPage extends React.PureComponent {
     this.state = {
       filterOption: 'All'
     }
-  }  
+  }
+
+
 
   render() {
     const { loading, error, pokedex, fetchMore } = this.props;
@@ -69,5 +71,47 @@ class FeedPage extends React.PureComponent {
 
   }
 }
+
+// Apollo Client Configuration
+const withData = graphql(pokemonFeedQuery, {
+  options: ({ match }) => ({
+    variables: {
+      offset: 0,
+      limit: FeedPage.numFetchedLimit
+    },
+    fetchPolicy: 'cache-and-network',
+  }),
+  props: ({
+    data: { loading, error, pokedex, updateQuery, fetchMore }
+  }) => ({
+    loading,
+    error,
+    pokedex,
+    updateQuery,
+    fetchMore: () =>
+    fetchMore({
+      variables: {
+        offset: pokedex.pokemon.edges.length,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult) {
+          return prev;
+        }
+
+        const newPokedex = {
+          pokemon: {
+            edges: [...prev.pokedex.pokemon.edges, ...fetchMoreResult.pokedex.pokemon.edges],
+            __typename: 'PokemonConnection'
+          },
+          __typename: 'Pokedex'
+        };
+
+        return Object.assign({}, prev, {
+          pokedex: newPokedex,
+        });
+      },
+    }),
+  })
+});
 
 export default withData(FeedPage);
