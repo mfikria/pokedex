@@ -55,17 +55,23 @@ class FeedPage extends React.PureComponent {
     this.fetchMoreOnFilter(value);
   }
 
-  handleFetchMore = () => {
-    if(!this.props.loading) {
-      this.props.fetchMore();
-    }
+  handleFetchMore = async () => {
+    do {
+      if(this.props.loading) {
+        break;
+      }
+
+      await this.props.fetchMore();
+
+      // Fetch again when network is error
+    } while(this.props.networkStatus === 8);
   }
 
   render() {
     const { loading, error, pokedex, fetchMore } = this.props;
 
     //debug
-    // console.dir(this.props);
+    console.dir(this.props);
 
     let content;
 
@@ -84,6 +90,7 @@ class FeedPage extends React.PureComponent {
     }
 
     if(pokedex){
+      const errorHappened = this.props.networkStatus === 8 ? "Error happened from the server please reload" : null;
       content = (
         <div>
           <DropdownFilter
@@ -98,7 +105,9 @@ class FeedPage extends React.PureComponent {
             basic
             loading={loading}
             padded='very'
-          />
+          >
+            {errorHappened}
+          </Segment>
         </div>
       )
     }
@@ -121,11 +130,12 @@ const withData = graphql(pokemonFeedQuery, {
     fetchPolicy: 'cache-and-network',
   }),
   props: ({
-    data: { loading, error, pokedex, updateQuery, fetchMore }
+    data: { loading, error, pokedex, networkStatus, updateQuery, fetchMore }
   }) => ({
     loading,
     error,
     pokedex,
+    networkStatus,
     updateQuery,
     fetchMore: () =>
     fetchMore({
