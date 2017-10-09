@@ -1302,18 +1302,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // Config API, for adding reducers and configuring our ReactQL app
 _config2.default.setGraphQLEndpoint('https://pokeapi-graphiql.herokuapp.com/graphql');
-// config.setApolloNetworkOptions({
-//   mode: 'no-cors'
-// });
+
+/* App */
+
+// Main component -- i.e. the 'root' React component in our app
+
+_config2.default.setApolloNetworkOptions({
+  credentials: 'same-origin'
+});
 
 /* SERVER */
 
 // Set our server config, by checking `SERVER` -- this code path will be
 // eliminated by Webpack in the browser, so we can safely add this.
 
-/* App */
-
-// Main component -- i.e. the 'root' React component in our app
 if (true) {
   /* SSL */
 
@@ -1718,7 +1720,7 @@ let FeedPage = class FeedPage extends _react2.default.PureComponent {
 
 // Query
 
-FeedPage.numFetchedLimit = 13;
+FeedPage.numFetchedLimit = 10;
 FeedPage.numFetchedLimitFilter = 7;
 const withData = (0, _reactApollo.graphql)(_pokemon_feed2.default, {
   options: ({ match }) => ({
@@ -3068,6 +3070,7 @@ const Html = ({ head, scripts, window, css, children }) => _react2.default.creat
     _react2.default.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }),
     head.meta.toComponent(),
     _react2.default.createElement('link', { rel: 'stylesheet', href: css }),
+    _react2.default.createElement('link', { rel: 'stylesheet', type: 'text/css', href: 'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css' }),
     head.title.toComponent()
   ),
   _react2.default.createElement(

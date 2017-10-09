@@ -468,10 +468,10 @@ exports.getServerURL = getServerURL;
 // Environment-aware functions
 
 // Get the protocol://host:port of where the current server would bind
-function getServerURL(host = "localhost", port = "4000", allowSSL = true) {
+function getServerURL(host = localhost, port = 4000, allowSSL = true) {
   // Check for SSL
   if (allowSSL && null) {
-    const stub = `https://${host || "localhost"}`;
+    const stub = `https://${host || localhost}`;
 
     // If we're on port 443, that's 'regular' SSL so no need to specify port
     if (null === '443') return stub;
@@ -479,7 +479,7 @@ function getServerURL(host = "localhost", port = "4000", allowSSL = true) {
   }
 
   // Plain HTTP
-  const stub = `http://${host || "localhost"}`;
+  const stub = `http://${host || localhost}`;
 
   // If we're on port 80, that's 'regular' HTTP so no need to specify port
   if (port === '80') return stub;
@@ -1198,7 +1198,7 @@ const listen = () => {
 
   // Plain HTTP
   if (_config2.default.enableHTTP) {
-    servers.push(_http2.default.createServer(app.callback()).listen("4000"));
+    servers.push(_http2.default.createServer(app.callback()).listen(4000));
   }
 
   // SSL -- only enable this if we have an `SSL_PORT` set on the environment
@@ -1379,18 +1379,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // Config API, for adding reducers and configuring our ReactQL app
 _config2.default.setGraphQLEndpoint('https://pokeapi-graphiql.herokuapp.com/graphql');
-// config.setApolloNetworkOptions({
-//   mode: 'no-cors'
-// });
+
+/* App */
+
+// Main component -- i.e. the 'root' React component in our app
+
+_config2.default.setApolloNetworkOptions({
+  credentials: 'same-origin'
+});
 
 /* SERVER */
 
 // Set our server config, by checking `SERVER` -- this code path will be
 // eliminated by Webpack in the browser, so we can safely add this.
 
-/* App */
-
-// Main component -- i.e. the 'root' React component in our app
 if (true) {
   /* SSL */
 
@@ -1795,7 +1797,7 @@ let FeedPage = class FeedPage extends _react2.default.PureComponent {
 
 // Query
 
-FeedPage.numFetchedLimit = 13;
+FeedPage.numFetchedLimit = 10;
 FeedPage.numFetchedLimitFilter = 7;
 const withData = (0, _reactApollo.graphql)(_pokemon_feed2.default, {
   options: ({ match }) => ({

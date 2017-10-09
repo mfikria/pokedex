@@ -1,5 +1,8 @@
 # [Pokedex](https://pokedex-portal.herokuapp.com)
 
+The web can be accessed on [https://pokedex-portal.herokuapp.com/](https://pokedex-portal.herokuapp.com/)
+Note: sometimes the graphql server on pokeapi-graphiql.herokuapp.com is not available. So, please check the availability of server first.
+
 Single Page Application using javascript, the application consumes Poke-API.
 - User can browse pokemon in infinite list
 - User can view detailed information of each pokemon
@@ -19,20 +22,27 @@ etc.
 ### Build & Run
 To build the application you need to use npm and use command as follows. Use yarn for better dependencies solver.
 ```{engine='sh'}
-yarn
-npm start
+yarn  // install dependencies
+npm start  // run for development
 ```
 You can access by default http://localhost:8080 for hot reloading and http://localhost:8081 for static server rendering. For windows user perhaps you should use https://github.com/felixrieseberg/windows-build-tools andusing Powershell as administrator to execute the script.
 
 In production, you can build static production server by the given command:
 ```{engine='sh'}
 npm run build // Build static server and assets
-npm server // run static server
+npm run server // run static server for production
 ```
+
+### Deploy
+You can deploy the project to heroku. The are something to be considered:
+1. Set Config variables of NPM_CONFIG_PRODUCTION=false and PORT=$port
+2. Set Procfile to web: npm run build-run
+
 
 ### Routes
 ##### Homepage (/)
 This page show all pokemon's name in infinite list. This list updated as user scroll with help from react semantic-ui component and Apollo Client.
+
 ##### Single Pokemon's Profile (/pokemon/:id)
 This page show pokemon's profile. User can see image and all pokemon information there.
 

@@ -689,9 +689,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 // Import external graphql server if any
 __WEBPACK_IMPORTED_MODULE_0_kit_config__["a" /* default */].setGraphQLEndpoint('https://pokeapi-graphiql.herokuapp.com/graphql');
-// config.setApolloNetworkOptions({
-//   mode: 'no-cors'
-// });
+__WEBPACK_IMPORTED_MODULE_0_kit_config__["a" /* default */].setApolloNetworkOptions({
+  credentials: 'same-origin'
+});
 
 /* SERVER */
 
@@ -1161,7 +1161,7 @@ var FeedPage = function (_React$PureComponent) {
 // Apollo Client Configuration
 
 
-FeedPage.numFetchedLimit = 13;
+FeedPage.numFetchedLimit = 10;
 FeedPage.numFetchedLimitFilter = 7;
 var withData = Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_6_src_graphql_queries_pokemon_feed_gql___default.a, {
   options: function options(_ref3) {

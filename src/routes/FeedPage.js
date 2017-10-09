@@ -20,7 +20,7 @@ class FeedPage extends React.PureComponent {
     }
   }
 
-  static numFetchedLimit = 13;
+  static numFetchedLimit = 10;
   static numFetchedLimitFilter = 7;
 
   countAvailablePokemonByType = (filterOption) => {
