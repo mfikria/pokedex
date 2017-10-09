@@ -140,7 +140,7 @@ const withData = graphql(pokemonFeedQuery, {
     fetchMore: () =>
     fetchMore({
       variables: {
-        offset: pokedex.pokemon.edges.length,
+        offset: pokedex.pokemon.edges.length ? pokedex.pokemon.edges.length : 10,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) {
