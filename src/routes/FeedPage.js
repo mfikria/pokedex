@@ -94,11 +94,11 @@ class FeedPage extends React.PureComponent {
             onBottomVisible={this.handleFetchMore}
             filterOption={this.state.filterOption}
           />
-          <Loader
-            active={loading}
-            inline='centered'>
-            Loading
-          </Loader>
+          <Segment
+            basic
+            loading={loading}
+            padded='very'
+          />
         </div>
       )
     }
