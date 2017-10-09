@@ -56,7 +56,7 @@ class FeedPage extends React.PureComponent {
   }
 
   handleFetchMore = () => {
-    if(this.props.loading) {
+    if(!this.props.loading) {
       this.props.fetchMore();
     }
   }
