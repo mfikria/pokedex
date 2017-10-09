@@ -50,7 +50,7 @@ import Main from 'src/components/main';
 //config.enableGraphQLServer();
 
 // Import external graphql server if any
-  config.setGraphQLEndpoint('http://pokeapi-graphiql.herokuapp.com/graphql');
+  config.setGraphQLEndpoint('https://pokeapi-graphiql.herokuapp.com/graphql');
   config.setApolloNetworkOptions({
   credentials: 'same-origin'
   });
