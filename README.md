@@ -1,6 +1,6 @@
 # [Pokedex](https://pokedex-portal.herokuapp.com)
 
-The web can be accessed on [https://pokedex-portal.herokuapp.com/](https://pokedex-portal.herokuapp.com/)
+The web could be accessed on [https://pokedex-portal.herokuapp.com/](https://pokedex-portal.herokuapp.com/)
 Note: sometimes the graphql server on pokeapi-graphiql.herokuapp.com is not available. So, please check the availability of server first.
 
 Single Page Application using javascript, the application consumes Poke-API.
@@ -42,9 +42,22 @@ You can deploy the project to heroku. The are something to be considered:
 ### Routes
 ##### Homepage (/)
 This page show all pokemon's name in infinite list. This list updated as user scroll with help from react semantic-ui component and Apollo Client.
+The infinite list schema could be achieved by sending a callback when the user see the bottom of the list container then use fetchMore method provided by Apollo client to fetch more data to the server.
+Filtering scheme is used state as a filter option then if the data is not enough call the fetchMore to retrieve more decent data.
 
 ##### Single Pokemon's Profile (/pokemon/:id)
 This page show pokemon's profile. User can see image and all pokemon information there.
+The data divided in several section in each tab pane for making easier to debugging.
+
+### Folder Structures
+The endpoint index is in /src/components/main/index.js
+
+- cert: for certification dummy
+- components: components definition used in application
+- graphql: query definition for query or mutation on graphql server
+- helpers: helper functions
+- routes: define router and controller of each page
+- styles: style definitions
 
 ### Screenshot
 ![N|Solid](https://github.com/mfikria/pokedex/raw/master/static/home.png)
