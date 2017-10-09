@@ -1,7 +1,7 @@
 # [Pokedex](https://pokedex-portal.herokuapp.com)
 
-The web could be accessed on [https://pokedex-portal.herokuapp.com/](https://pokedex-portal.herokuapp.com/)
-Note: sometimes the graphql server on pokeapi-graphiql.herokuapp.com is not available. So, please check the availability of server first.
+The web could be accessed on [https://pokedex-portal.herokuapp.com/](https://pokedex-portal.herokuapp.com/).
+Note: sometimes the graphql server on [https://pokeapi-graphiql.herokuapp.com](https://pokeapi-graphiql.herokuapp.com) is not available. So, please check the availability of server first.
 
 Single Page Application using javascript, the application consumes Poke-API.
 - User can browse pokemon in infinite list
@@ -52,12 +52,15 @@ The data divided in several section in each tab pane for making easier to debugg
 ### Folder Structures
 The endpoint index is in /src/components/main/index.js
 
-- cert: for certification dummy
-- components: components definition used in application
-- graphql: query definition for query or mutation on graphql server
-- helpers: helper functions
-- routes: define router and controller of each page
-- styles: style definitions
+- kit: server and webpack definition
+- config: configuration fol the project
+- static: static file used in the project
+- src/cert: for certification dummy
+- src/components: components definition used in application
+- src/graphql: query definition for query or mutation on graphql server
+- src/helpers: helper functions
+- src/routes: define router and controller of each page
+- src/styles: style definitions
 
 ### Screenshot
 ![N|Solid](https://github.com/mfikria/pokedex/raw/master/static/home.png)
