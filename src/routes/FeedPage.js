@@ -57,7 +57,9 @@ class FeedPage extends React.PureComponent {
 
   handleFetchMore = async () => {
     do {
-      if(this.props.loading) {
+
+      // Prevent race condition with different query: http://dev.apollodata.com/react/api-queries.html#graphql-query-data-networkStatus
+      if(this.props.loading && this.props.networkStatus !== 1) {
         break;
       }
 
