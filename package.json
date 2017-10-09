@@ -82,6 +82,7 @@
     "graphql": "^0.11.3",
     "ip": "^1.1.5",
     "isomorphic-fetch": "^2.2.1",
+    "jquery": "^3.2.1",
     "kcors": "^2.2.1",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
@@ -103,8 +104,8 @@
     "redux-thunk": "^2.2.0",
     "regenerator-runtime": "^0.11.0",
     "seamless-immutable": "^7.1.2",
-    "semantic-ui-react": "^0.74.2",
-    "semantic-ui-css": "^2.2.12"
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.74.2"
   },
   "engines": {
     "node": ">=7",
